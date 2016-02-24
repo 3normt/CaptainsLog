@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {LogEntryComponent} from './logEntry.component'
 
 @Component({
     selector: 'captains-log',
@@ -9,9 +10,11 @@ import {Component} from 'angular2/core';
 			<p>{{greeting}}</p>
 			
 			This is the captains-log component. 
-			
+			<log-entry></log-entry>
 		</div>		
-		`		
+		`
+        , 
+        directives: [LogEntryComponent]		
 })
 export class CaptainsLog { 	
 		

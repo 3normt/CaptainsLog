@@ -1,0 +1,8 @@
+<form (ng-submit="onSubmit()")>
+    <div>
+        <span>Star date: {{starDateId}}</span><br/>
+        <input [(ngModel="model.subject")] id="subjectInput" type="text" placeholder="Subject"/><br/>
+        <textarea [(ngModel="model.description")] id="descriptionText" rows="4"></textarea><br/>
+        <button type="submit">Save</button>
+    </div>
+</form>
