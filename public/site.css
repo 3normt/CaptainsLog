@@ -1,3 +1,6 @@
 html {}
 body {padding:1em;}
 .captns-log-container {border: solid #ECECEC; padding:1em;}
+
+.log-entries {}
+.log-entries .entry {}

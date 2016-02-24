@@ -1,6 +1,8 @@
 import {Component} from 'angular2/core';
 import {LogEntryComponent} from './logEntry.component'
 
+import {LogEntries} from './LogEntries.component';
+
 @Component({
     selector: 'captains-log',
     template: 		
@@ -11,10 +13,12 @@ import {LogEntryComponent} from './logEntry.component'
 			
 			This is the captains-log component. 
 			<log-entry></log-entry>
-		</div>		
-		`
-        , 
-        directives: [LogEntryComponent]		
+		</div>
+		<div class="log-entries">
+			<log-entries></log-entries>
+		</div>				
+		`,
+		directives: [LogEntries, LogEntryComponent]
 })
 export class CaptainsLog { 	
 		
@@ -23,6 +27,4 @@ export class CaptainsLog {
 	ngOnInit() {
 		console.log('init for captnslog'); 		
 	}
-	
-
 }
