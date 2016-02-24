@@ -1,4 +1,4 @@
-System.register(['angular2/core', './LogEntries.component'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,36 +10,32 @@ System.register(['angular2/core', './LogEntries.component'], function(exports_1,
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, LogEntries_component_1;
-    var CaptainsLog;
+    var core_1;
+    var LogEntries;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (LogEntries_component_1_1) {
-                LogEntries_component_1 = LogEntries_component_1_1;
             }],
         execute: function() {
-            CaptainsLog = (function () {
-                function CaptainsLog() {
-                    this.greeting = 'Welcome to the captains log.';
+            LogEntries = (function () {
+                function LogEntries() {
+                    this.logEntries = [{ id: 0, subject: 'Jørgen', description: '...er .... KUL!' }, { id: 1, subject: 'Lars', description: '...er .... KUL!' }, { id: 2, subject: 'Morten', description: '...er .... KUL!' }];
                 }
-                CaptainsLog.prototype.ngOnInit = function () {
-                    console.log('init for captnslog');
+                LogEntries.prototype.ngOnInit = function () {
+                    console.log('init for log entries');
                 };
-                CaptainsLog = __decorate([
+                LogEntries = __decorate([
                     core_1.Component({
-                        selector: 'captains-log',
-                        template: "\n\t\t<div class=\"captns-log-container\">\n\t\t\t<h1>Captains Log</h1>\n\t\t\t<p>{{greeting}}</p>\n\t\t\t\n\t\t\tThis is the captains-log component. \n\t\t\t\n\t\t</div>\t\n\t\t<div class=\"log-entries\">\n\t\t\t<log-entries></log-entries>\n\t\t</div>\t\t\n\t\t",
-                        directives: [LogEntries_component_1.LogEntries]
+                        selector: 'log-entries',
+                        template: "\n\t\t<div class=\"log-entries-container\">\t\t\t\n\t\t\t<p>Here comes the log entries</p>\t\n\t\t\t\n\t\t\t\n\t\t\t<div class=\"log-entries\">\n\t\t\t\t<div class=\"entry\" *ngFor=\"#entry of logEntries\">\n\t\t\t\t\t{{entry.subject}}\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t\t\n\t\t"
                     }), 
                     __metadata('design:paramtypes', [])
-                ], CaptainsLog);
-                return CaptainsLog;
+                ], LogEntries);
+                return LogEntries;
             }());
-            exports_1("CaptainsLog", CaptainsLog);
+            exports_1("LogEntries", LogEntries);
         }
     }
 });
-//# sourceMappingURL=captainsLog.component.js.map
+//# sourceMappingURL=LogEntries.component.js.map
