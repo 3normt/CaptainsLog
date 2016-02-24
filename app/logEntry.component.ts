@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {LogEntryModel} from './logEntry';
+import {LogEntryService} from './logEntry.service';
 
 @Component({
    selector: 'log-entry',
@@ -12,12 +13,17 @@ import {LogEntryModel} from './logEntry';
             <textarea [(ngModel)]="model.description" id="descriptionText" rows="4"></textarea><br/>
             <button (click)="onSubmit()" type="button">Save</button>
         </div>
-    `
+    `,
+    providers: [LogEntryService]
 })
 
 export class LogEntryComponent {
     private id = 1;
     public model:LogEntryModel;
+    
+    constructor(private _logEntryService: LogEntryService){
+        
+    }
     
     ngOnInit(){
         this.id++;
@@ -25,7 +31,7 @@ export class LogEntryComponent {
     }
     
     onSubmit(){
-        this.model = new LogEntryModel(this.id, this.model.subject, this.model.description);
-        alert("Yay!");
+        this._logEntryService.addLogEntry(this.model);
+        console.log(this._logEntryService.getLogEntries());
     }
 }

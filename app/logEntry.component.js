@@ -1,4 +1,4 @@
-System.register(['angular2/core', './logEntry'], function(exports_1, context_1) {
+System.register(['angular2/core', './logEntry', './logEntry.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './logEntry'], function(exports_1, context_1) 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, logEntry_1;
+    var core_1, logEntry_1, logEntry_service_1;
     var LogEntryComponent;
     return {
         setters:[
@@ -19,10 +19,14 @@ System.register(['angular2/core', './logEntry'], function(exports_1, context_1) 
             },
             function (logEntry_1_1) {
                 logEntry_1 = logEntry_1_1;
+            },
+            function (logEntry_service_1_1) {
+                logEntry_service_1 = logEntry_service_1_1;
             }],
         execute: function() {
             LogEntryComponent = (function () {
-                function LogEntryComponent() {
+                function LogEntryComponent(_logEntryService) {
+                    this._logEntryService = _logEntryService;
                     this.id = 1;
                 }
                 LogEntryComponent.prototype.ngOnInit = function () {
@@ -30,16 +34,17 @@ System.register(['angular2/core', './logEntry'], function(exports_1, context_1) 
                     this.model = new logEntry_1.LogEntryModel(this.id, "", "");
                 };
                 LogEntryComponent.prototype.onSubmit = function () {
-                    this.model = new logEntry_1.LogEntryModel(this.id, this.model.subject, this.model.description);
-                    alert("Yay!");
+                    this._logEntryService.addLogEntry(this.model);
+                    console.log(this._logEntryService.getLogEntries());
                 };
                 LogEntryComponent = __decorate([
                     core_1.Component({
                         selector: 'log-entry',
                         //templateUrl: 'app/logEntry.component.html'
-                        template: "\n        <div>\n            <span >Star date: </span><br/>\n            <input [(ngModel)]=\"model.subject\" id=\"subjectInput\" type=\"text\" placeholder=\"Subject\"/><br/>\n            <textarea [(ngModel)]=\"model.description\" id=\"descriptionText\" rows=\"4\"></textarea><br/>\n            <button (click)=\"onSubmit()\" type=\"button\">Save</button>\n        </div>\n    "
+                        template: "\n        <div>\n            <span >Star date: </span><br/>\n            <input [(ngModel)]=\"model.subject\" id=\"subjectInput\" type=\"text\" placeholder=\"Subject\"/><br/>\n            <textarea [(ngModel)]=\"model.description\" id=\"descriptionText\" rows=\"4\"></textarea><br/>\n            <button (click)=\"onSubmit()\" type=\"button\">Save</button>\n        </div>\n    ",
+                        providers: [logEntry_service_1.LogEntryService]
                     }), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [logEntry_service_1.LogEntryService])
                 ], LogEntryComponent);
                 return LogEntryComponent;
             }());

@@ -1,4 +1,5 @@
 import {Component} from 'angular2/core';
+import {LogEntryService} from './logEntry.service';
 
 @Component({
     selector: 'log-entries',
@@ -15,13 +16,17 @@ import {Component} from 'angular2/core';
 			</div>
 		</div>
 		
-		`		
+		`,
+        providers: [LogEntryService]	
 })
 export class LogEntries { 		
 		
 	logEntries = [{id: 0, subject: 'Jørgen', description: '...er .... KUL!'},{id: 1, subject: 'Lars', description: '...er .... KUL!'},{id: 2, subject: 'Morten', description: '...er .... KUL!'}]; 
-	
+        
+    constructor(private _logEntryService: LogEntryService){
+        
+    }
 	ngOnInit() {
-		console.log('init for log entries'); 		
+		this.logEntries = this._logEntryService.getLogEntries();	
 	}
 }
